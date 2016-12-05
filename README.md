@@ -1,7 +1,7 @@
 # PROJETO-IF968
 
 ###########################################################################################
- Univesidade Federal de Pernambuco -- UFPE (http://www.ufpe.br)                            
+ Univesidade Federal de Pernambuco - UFPE (http://www.ufpe.br)                            
  Centro de Informatica - CIn (http://www.cin.ufpe.br)                                     
  Bacharelado em Sistemas de Informacao                                                     
  IF968 - Programacao 1                                                                    
