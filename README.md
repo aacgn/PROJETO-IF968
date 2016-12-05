@@ -8,7 +8,7 @@
                                                                                            
  Autor:    Antonio Augusto Correa Gondim Neto (aacgn)
  
- Coloboração: Marcos Vinicius Holanda Borges (mvhb)
+ Colaboração: Marcos Vinicius Holanda Borges (mvhb)
                                                                                            
                                                                                            
  Email:    aacgn@cin.ufpe.br                                                               
