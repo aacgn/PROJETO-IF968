@@ -20,7 +20,7 @@
 #                sentimentos de comentarios de filmes postados no site Rotten Tomatoes.     #
 #                                                                                           #
 # Licenca: The MIT License (MIT)                                                            #
-#            Copyright(c) 2016 Fulano de Tal, Beltrano do Cin                               #
+#            Copyright(c) 2016 Antonio Augusto Correa Gondim Neto (aacgn)                   #
 #                                                                                           #
 #                                                                                           #
 #############################################################################################
