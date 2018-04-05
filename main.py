@@ -44,14 +44,14 @@ def clean_up(s):
         de ambos os extremos. A pontuacao presente no interior da string
         e' mantida intacta.
     '''
-    stop = ['a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't", 'as', 'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't", 'cannot', 'could', "couldn't", 'did', "didn't", 'do', 'does', "doesn't", 'doing', "don't", 'down', 'during', 'each', 'few', 'for', 'from', 'further', 'had', "hadn't", 'has', "hasn't", 'have', "haven't", 'having', 'he', "he'd", "he'll", "he's", 'her', 'here', "here's", 'hers', 'herself', 'him', 'himself', 'his', 'how', "how's", 'i', "i'd", "i'll", "i'm", "i've", 'if', 'in', 'into', 'is', "isn't", 'it', "it's", 'its', 'itself', "let's", 'me', 'more', 'most', "mustn't", 'my', 'myself', 'no', 'nor', 'not', 'of', 'off', 'on', 'once', 'only', 'or', 'other', 'ought', 'our', 'ours\tourselves', 'out', 'over', 'own', 'same', "shan't", 'she', "she'd", "she'll", "she's", 'should', "shouldn't", 'so', 'some', 'such', 'than', 'that', "that's", 'the', 'their', 'theirs', 'them', 'themselves', 'then', 'there', "there's", 'these', 'they', "they'd", "they'll", "they're", "they've", 'this', 'those', 'through', 'to', 'too', 'under', 'until', 'up', 'very', 'was', "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were', "weren't", 'what', "what's", 'when', "when's", 'where', "where's", 'which', 'while', 'who', "who's", 'whom', 'why', "why's", 'with', "won't", 'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've", 'your', 'yours', 'yourself', 'yourselves']
+    neutralLIST = ['a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', "aren't", 'as', 'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by', "can't", 'cannot', 'could', "couldn't", 'did', "didn't", 'do', 'does', "doesn't", 'doing', "don't", 'down', 'during', 'each', 'few', 'for', 'from', 'further', 'had', "hadn't", 'has', "hasn't", 'have', "haven't", 'having', 'he', "he'd", "he'll", "he's", 'her', 'here', "here's", 'hers', 'herself', 'him', 'himself', 'his', 'how', "how's", 'i', "i'd", "i'll", "i'm", "i've", 'if', 'in', 'into', 'is', "isn't", 'it', "it's", 'its', 'itself', "let's", 'me', 'more', 'most', "mustn't", 'my', 'myself', 'no', 'nor', 'not', 'of', 'off', 'on', 'once', 'only', 'or', 'other', 'ought', 'our', 'ours\tourselves', 'out', 'over', 'own', 'same', "shan't", 'she', "she'd", "she'll", "she's", 'should', "shouldn't", 'so', 'some', 'such', 'than', 'that', "that's", 'the', 'their', 'theirs', 'them', 'themselves', 'then', 'there', "there's", 'these', 'they', "they'd", "they'll", "they're", "they've", 'this', 'those', 'through', 'to', 'too', 'under', 'until', 'up', 'very', 'was', "wasn't", 'we', "we'd", "we'll", "we're", "we've", 'were', "weren't", 'what', "what's", 'when', "when's", 'where', "where's", 'which', 'while', 'who', "who's", 'whom', 'why', "why's", 'with', "won't", 'would', "wouldn't", 'you', "you'd", "you'll", "you're", "you've", 'your', 'yours', 'yourself', 'yourselves']
     punctuationLIST = ['', ' '' ', ',', ';', '[', ']', '[]', '*', '#', '<', '>', '<>', '?', ':', '!', '(', ')', '()', '-', '.']  
     punctuation = ''''!"',;:.-?)([]<>*#\n\t\r'''
     s = s.lower().strip(punctuation)
     lista = s.split()
     result = ""
     for x in lista:
-        if not ((x in stop) or (x in punctuationLIST)):
+        if not ((x in neutralLIST) or (x in punctuationLIST)):
             x = x.strip(punctuation)
             result += x + " "
     return result
@@ -63,13 +63,13 @@ def readTestSet(fname):
 	''' 
     reviews = []
 
-    arquivoTEST = open(fname, "r")
-    for p in arquivoTEST:
+    testFILE = open(fname, "r")
+    for p in testFILE:
         p = p.replace("\n","")
         p = p.replace("\t","")
         reviews.append((int(p[0]), p[1:]))
 
-    arquivoTEST.close()
+    testFILE.close()
 
     return reviews
 
@@ -79,17 +79,17 @@ def readTrainingSet(fname):
         medio das palavras no comentarios.
     '''
     a = []
-    arquivoTRAIN = open(fname, "r")
+    trainFILE = open(fname, "r")
 
-    for x in arquivoTRAIN:
+    for x in trainFILE:
         x = x.replace("\n","")
         x = x.replace("\t","")
         a.append(x)
         
-    arquivoTRAIN.close()
+    trainFILE.close()
     
-    dictVALOR = {}
-    palavrasDict = dictVALOR.keys()
+    dictVALUE = {}
+    dictWORDS = dictVALUE.keys()
     
     for x in a:
         x = x.lower()
@@ -98,12 +98,12 @@ def readTrainingSet(fname):
             if y == x[0]:
                 score = int(y)
             else:
-                if not y in list(palavrasDict):
-                    dictVALOR[y] = (y, score, 1)
+                if not y in list(dictWORDS):
+                    dictVALUE[y] = (y, score, 1)
                 else:
-                    dictVALOR[y] = (y, dictVALOR[y][1]+score, dictVALOR[y][2]+1)    
+                    dictVALUE[y] = (y, dictVALUE[y][1]+score, dictVALUE[y][2]+1)    
         
-    return dictVALOR
+    return dictVALUE
 
 def computeSentiment(words, review):
     ''' Retorna o sentimento do comentario recebido como parametro.
@@ -117,21 +117,20 @@ def computeSentiment(words, review):
     reviewP = review[1].lower()
     reviewP = clean_up(reviewP)
     reviewP = list(split_on_separators(reviewP, ' \/-'))
-    scoresFINAL = 0
-    countsFINAL = 0
-    palavrasDict = words.keys()
-    palavrasDict = list(palavrasDict)
+    scoreFINAL = 0
+    countFINAL = 0
+    dictWORDS = words.keys()
 
     for x in reviewP:
-        if x in list(palavrasDict):
-            scoresFINAL += words[x][1]/words[x][2]
-            countsFINAL += 1
+        if x in list(dictWORDS):
+            scoreFINAL += words[x][1]/words[x][2]
+            countFINAL += 1
         else:
-            scoresFINAL += 2
-            countsFINAL += 1
+            scoreFINAL += 2
+            countFINAL += 1
 
-    if countsFINAL > 0:        
-        return scoresFINAL / countsFINAL
+    if countFINAL > 0:        
+        return scoreFINAL / countFINAL
     else:
         return review[0]
 
@@ -145,9 +144,9 @@ def computeSumSquaredErrors(words, reviews):
     '''   
     qERROR = 0
     for b in reviews:
-        valorTEST = b[0]
-        valorIA = computeSentiment(words, b)
-        dif = valorTEST - valorIA
+        testVALUE = b[0]
+        iaVALUE = computeSentiment(words, b)
+        dif = testVALUE - iaVALUE
         dif = dif*dif
         qERROR += dif
     qERROR /= len(reviews)      
@@ -161,14 +160,14 @@ def main():
         print ('O programa deve ser executado como python sentiment_analysis.py <arq-treino> <arq-teste>')
         sys.exit(0)
 
-    # Lendo conjunto de treinamento e computando escore das palavras
+    # Le arquivo de treino e computa valor das palavras
     words = readTrainingSet(sys.argv[1])
 
-    # Lendo conjunto de teste
+    # Le arquivo de teste e calcula o valor de cada comentário, baseando-se no valor das palavras anteriormente calculado pela leitura da arquivo de treino
     reviews = readTestSet(sys.argv[2])
     
+    # Calcula e exibe a disperssão geral do software, vendo a diferença entre o valor calculado e sua real qualitatividade representativa.
     sse = computeSumSquaredErrors(words, reviews)
-    
     print ('A soma do quadrado dos erros divido pelo tamanho da lista de teste é: {0}'.format(sse))
             
 
